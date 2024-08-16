@@ -1,8 +1,8 @@
-import "dotenv/config";
-import { ethers, JsonRpcProvider } from "ethers";
+require("dotenv/config");
+const { ethers, JsonRpcProvider } = require("ethers");
 
 const getProvider = (mainnet = false) => {
-  const chain = mainnet ? "mainnet" : "goerli";
+  const chain = mainnet ? "mainnet" : "sepolia";
   const providerUrl = `https://${chain}.infura.io/v3/${process.env.INFURA_KEY}`;
 
   return new JsonRpcProvider(providerUrl);
@@ -30,4 +30,4 @@ const getSigner = (mainnet = false) => {
 // const signer = getSigner();
 // console.log(await signer.getAddress());
 
-export { getProvider, generateNewWallet, getSigner };
+module.exports = { getProvider, generateNewWallet, getSigner };
